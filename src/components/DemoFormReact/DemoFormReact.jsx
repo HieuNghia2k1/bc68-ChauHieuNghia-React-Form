@@ -96,7 +96,7 @@ const DemoFormReact = () => {
                 Thêm nhân viên{" "}
               </button>
             </div>
-            <TableSinhVien />
+            <TableSinhVien arrSinhVien={arrSinhVien} />
           </div>
         </form>
       </div>
