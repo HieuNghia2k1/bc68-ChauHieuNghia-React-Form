@@ -1,14 +1,16 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import TableSinhVien from "./TableSinhVien";
+import InputCustom from "./InputCustom";
+import { setValueLocalStorage } from "../../utils/util";
 
 const DemoFormReact = () => {
   const [arrSinhVien, setArrSinhVien] = useState([]);
   // Quản lý sinh viên: mssv, tên, sdt, email
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues: {
-      mssv: "A001",
+      mssv: "",
       soDienThoai: "",
       tenSinhVien: "",
       email: "",
@@ -22,71 +24,55 @@ const DemoFormReact = () => {
     },
   });
   const [value, setValue] = useState("");
+
+  // useEffect(() => {
+  //   setValueLocalStorage("arrSinhVien", arrSinhVien);
+  // }, [arrSinhVien]);
+
   return (
     <div className="container">
-      <h2 className="  bg-yellow-400 text-center text-4xl">
+      <h2 className="  bg-gray-600 text-center text-4xl text-white">
         Thông tin Sinh Viên
       </h2>
       <div>
         <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-2 ">
+          <div className="grid grid-cols-2 gap-5 ">
             {/* MSSV */}
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
-                Mã Sinh Viên
-              </label>
-              <input
-                type="text"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                placeholder="Vui lòng nhập MSSV"
-                name="mssv"
-                onChange={handleChange}
-                value={values.mssv}
-              />
-            </div>
+            <InputCustom
+              contentLabel="Mã Sinh Viên"
+              placeholder="Vui lòng nhập MSSV"
+              name={"mssv"}
+              value={values.mssv}
+              onChange={handleChange}
+            />
 
             {/* SDT */}
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
-                Số điện thoại
-              </label>
-              <input
-                type="text"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                placeholder="Vui lòng nhập Số điện thoại"
-                name="soDienThoai"
-                onChange={handleChange}
-                value={values.soDienThoai}
-              />
-            </div>
+            <InputCustom
+              contentLabel="Số điện thoại"
+              placeholder="Vui lòng nhập Số điện thoại"
+              name={"soDienThoai"}
+              value={values.soDienThoai}
+              onChange={handleChange}
+            />
+
             {/* Name */}
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
-                Tên Sinh Viên
-              </label>
-              <input
-                type="text"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                placeholder="Vui lòng nhập Tên Sinh Viên"
-                name="tenSinhVien"
-                onChange={handleChange}
-                value={values.tenSinhVien}
-              />
-            </div>
+            <InputCustom
+              contentLabel="Tên Sinh Viên"
+              placeholder="Vui lòng nhập Tên Sinh Viên"
+              name={"tenSinhVien"}
+              value={values.tenSinhVien}
+              onChange={handleChange}
+            />
+
             {/* Email */}
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900">
-                Email
-              </label>
-              <input
-                type="text"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                placeholder="Vui lòng nhập Email"
-                name="email"
-                onChange={handleChange}
-                value={values.email}
-              />
-            </div>
+            <InputCustom
+              contentLabel="Email"
+              placeholder="Vui lòng nhập Email"
+              name={"email"}
+              value={values.email}
+              onChange={handleChange}
+            />
+
             <div className="space-x-5">
               {/* Thêm nhân viên */}
               <button
@@ -105,5 +91,3 @@ const DemoFormReact = () => {
 };
 
 export default DemoFormReact;
-
-// 1h20
