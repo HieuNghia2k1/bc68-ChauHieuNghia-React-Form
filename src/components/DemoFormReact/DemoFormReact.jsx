@@ -17,21 +17,14 @@ const DemoFormReact = () => {
     },
     onSubmit: (values) => {
       console.log(values);
-      // let newArrSinhVien = [...arrSinhVien];
-      // newArrSinhVien.push(values);
-      // setArrSinhVien(newArrSinhVien);
       setArrSinhVien([...arrSinhVien, values]);
     },
   });
   const [value, setValue] = useState("");
 
-  // useEffect(() => {
-  //   setValueLocalStorage("arrSinhVien", arrSinhVien);
-  // }, [arrSinhVien]);
-
   return (
     <div className="container">
-      <h2 className="  bg-gray-600 text-center text-4xl text-white">
+      <h2 className="  bg-gray-600 text-center text-4xl text-white ">
         Thông tin Sinh Viên
       </h2>
       <div>
